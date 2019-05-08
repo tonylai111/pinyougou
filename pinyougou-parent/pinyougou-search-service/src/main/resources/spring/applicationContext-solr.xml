@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--配置solrtemplate-->
+    <!--配置solr服务器的地址-->
+
+    <bean class="org.apache.solr.client.solrj.impl.HttpSolrServer" id="solrServer">
+        <!--/collection1 可以不加，默认就是使用collection1-->
+        <constructor-arg name="baseURL" value="http://192.168.25.128:8080/solr/collection1"></constructor-arg>
+    </bean>
+
+    <bean class="org.springframework.data.solr.core.SolrTemplate" id="solrTemplate">
+        <constructor-arg name="solrServer" ref="solrServer"></constructor-arg>
+    </bean>
+
+
+
+</beans>
